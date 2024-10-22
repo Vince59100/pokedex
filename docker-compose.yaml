@@ -1,0 +1,30 @@
+networks:
+  app-network:
+    driver: bridge
+
+services:
+    php8_2-sf7-apiplatform:
+        container_name: php8_2-sf7-apiplatform
+        build: php8_2-sf7-apiplatform
+        ports:
+            - "9000:8000"
+        volumes:
+            - ./project:/var/www/app
+        networks:
+            - app-network             
+
+    database:
+        image: postgres:13-alpine
+        environment:
+            POSTGRES_DB: pokedex
+            POSTGRES_PASSWORD: clavier
+            POSTGRES_USER: vincent
+        volumes:
+            - db-data:/var/lib/postgresql/data:rw
+        ports:
+            - "5432:5432"
+        networks:
+            - app-network             
+
+volumes:
+  db-data:

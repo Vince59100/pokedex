@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pokemon index{% endblock %}
+
+
+
+
+{% block body %}
+    <link href={{asset("css/style.css")}} rel="stylesheet">
+
+
+    <h1>Pokedex</h1>
+    <a href="{{ path('pokemon_add') }}" class="add-poke">
+        <button class="ajouterPokemon">Ajouter un Pokémon</button>
+    </a>
+    <div class="container">
+        <div class="pokedex">
+        {% for pokemon in pokemons %}
+            <div class="pokemon-card">
+                <img src="{{pokemon.imagePokedex}}"/>
+                <h3>{{pokemon.nom}}</h3>
+                <p>{{pokemon.description}}</p>
+                <form action="{{ path('pokemon_delete', { id: pokemon.id }) }}" method="post" style="display:inline;">
+                    <button class="delete" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce Pokémon ?');">Supprimer</button>
+                </form>
+                <a href="{{ path('pokemon_edit', { id: pokemon.id }) }}">
+                    <button class="update">Modifier</button>
+                </a>
+            </div>
+        {% endfor %}
+        </div>
+    </div>    
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{# templates/pokemon/add.html.twig #}
+
+<h1>Ajouter un Pokémon</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Ajouter</button>
+{{ form_end(form) }}
+
+<a href="{{ path('pokedex') }}">Retour à la liste</a>

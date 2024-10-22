@@ -1,0 +1,10 @@
+{# templates/pokemon/edit.html.twig #}
+
+<h1>Modifier le Pokémon</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Enregistrer</button>
+{{ form_end(form) }}
+
+<a href="{{ path('pokedex') }}">Retour à la liste</a>
